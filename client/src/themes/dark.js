@@ -1,5 +1,6 @@
 export default {
   metaThemeColor: '#333333',
   background: '#333',
-  text: '#fff'
+  text: '#fff',
+  navbarBackground: '#333',
 }
