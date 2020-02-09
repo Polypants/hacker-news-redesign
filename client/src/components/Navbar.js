@@ -19,18 +19,34 @@ const Container = styled.nav`
 const MenuButton = styled.div`
   height: ${rem(size)};
   width: ${rem(size)};
-  background: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
-const Navbar = () => {
-  return (
-    <Container>
-      <h1>Hacker News</h1>
-      <MenuButton>
+const MenuLine = styled.div`
+  height: ${rem(3)};
+  width: ${rem(25)};
+  background: ${({ theme }) => theme.text};
+  & + & {
+    margin-top: ${rem(4)};
+  }
+`
 
-      </MenuButton>
-    </Container>
-  )
-}
+const Title = styled.h1`
+  margin: 0 0 0 ${rem(12.5)};
+  font-size: ${rem(24)};
+`
+
+const Navbar = () => (
+  <Container>
+    <Title>Hacker News</Title>
+    <MenuButton>
+      <MenuLine />
+      <MenuLine />
+    </MenuButton>
+  </Container>
+)
 
 export default Navbar

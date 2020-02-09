@@ -4,33 +4,46 @@ import axios from 'axios'
 
 import lightTheme from '../themes/light'
 import darkTheme from '../themes/dark'
+import baseTheme from '../themes/base'
 import { API_BASE_URL, TOP_STORY_IDS, POSTS_PER_PAGE } from '../constants'
 import Head from './Head'
 import Main from './Main'
 import NextPageBlock from './NextPageBlock'
 import Navbar from './Navbar'
 
-const ScrollingContent = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  height: 100vh;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`
+
+const ScrollingContent = styled.main`
+  overflow: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
 `
 
 const App = () => {
-  const [theme, setTheme] = useState(lightTheme)
+  const [theme, setTheme] = useState({ ...lightTheme, ...baseTheme })
   const [storyIDs, setStoryIDs] = useState([])
   const [stories, setStories] = useState([])
   const [pageNum, setPageNum] = useState(0)
+  const [isLoadingPages, setIsLoadingPages] = useState(false)
 
   const getNextPageOfStories = async () => {
+    setIsLoadingPages(true)
     const newStories = await Promise.all(
       storyIDs
         .slice(POSTS_PER_PAGE * pageNum, POSTS_PER_PAGE * (pageNum + 1))
         .map(id => axios.get(`${API_BASE_URL}item/${id}.json`))
     )
     setStories([...stories, newStories.map(({ data }) => data)])
+    setIsLoadingPages(false)
 
     const newStoriesWithImages = await Promise.all(newStories.map(async ({ data }) => {
       const metaData = await axios.get('/api/get-image', { params: { url: data.url } })
@@ -40,7 +53,7 @@ const App = () => {
   }
 
   const onNextBlockVisibilityChange = isVisible => {
-    if (isVisible) setPageNum(pageNum + 1)
+    if (isVisible && !isLoadingPages) setPageNum(pageNum + 1)
   }
 
   useEffect(() => {
@@ -61,11 +74,13 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <>
         <Head />
-        <ScrollingContent>
+        <Container>
           <Navbar />
-          <Main stories={stories} />
-          {stories.length > 0 && <NextPageBlock onChange={onNextBlockVisibilityChange} />}
-        </ScrollingContent>
+          <ScrollingContent>
+            <Main stories={stories} />
+            {stories.length > 0 && <NextPageBlock onChange={onNextBlockVisibilityChange} />}
+          </ScrollingContent>
+        </Container>
       </>
     </ThemeProvider>
   )

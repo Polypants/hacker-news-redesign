@@ -11,16 +11,14 @@ const Container = styled.div`
   text-align: center;
 `
 
-const NextPageBlock = ({ onChange }) => {
-  return (
-    <VisibilitySensor onChange={onChange}>
-      {({ isVisible }) => (
-        <Container isVisible={isVisible}>
-          scroll down for more stories
-        </Container>
-      )}
-    </VisibilitySensor>
-  )
-}
+const NextPageBlock = ({ onChange }) => (
+  <VisibilitySensor onChange={onChange}>
+    {({ isVisible }) => (
+      <Container isVisible={isVisible}>
+        scroll down for more stories
+      </Container>
+    )}
+  </VisibilitySensor>
+)
 
 export default NextPageBlock
