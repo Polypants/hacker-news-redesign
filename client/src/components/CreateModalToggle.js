@@ -17,7 +17,7 @@ const CreateNewStroyCircle = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 3;
+  z-index: 6;
   transition: ${({ isCreateModalOpen }) => isCreateModalOpen ? 'opacity 0.5s 0.1s ease-in-out, transform 0.5s 0.1s ease-in-out' : 'all 0.1s'};
   transform: ${({ isCreateModalOpen }) => isCreateModalOpen && 'scale(40)'};
   opacity: ${({ isCreateModalOpen }) => isCreateModalOpen && 0};
@@ -33,7 +33,7 @@ const CloseCreateModal = styled(CloseSVG)`
   padding: ${rem(18)};
   border-radius: 50%;
   fill: ${({ theme }) => theme.text};
-  z-index: 2;
+  z-index: 5;
   cursor: pointer;
   background: ${({ theme }) => theme.menuPanelAccent};
 `
