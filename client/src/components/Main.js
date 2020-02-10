@@ -47,12 +47,18 @@ const Container = styled.main`
   `}
 `
 
-const Main = ({ storiesToRender, isLoadingMeta, isLoadingPages, onNextBlockVisibilityChange }) => (
+const Main = ({
+  storiesToRender,
+  isLoadingMeta,
+  isLoadingPages,
+  onNextBlockVisibilityChange,
+  searchString
+}) => (
   <Container>
     {flatten(storiesToRender).map(story => (
       <Story isLoading={isLoadingMeta} story={story} />
     ))}
-    {storiesToRender.length > 0 && (
+    {storiesToRender.length > 0 && searchString.length === 0 && (
       <NextPageBlock
         onChange={onNextBlockVisibilityChange}
         isLoadingPages={isLoadingPages}

@@ -19,6 +19,7 @@ export const postsPerPage = 30
 
 // options for fuzzy search library
 const fuseOptions = {
+  threshold: 0.2,
   keys: [
     { name: 'by', weight: 0.1 },
     { name: 'title', weight: 0.6 },
@@ -113,7 +114,7 @@ const App = () => {
   }, [pageNum])
 
   useEffect(() => {
-    // when search string or page number is updated, fuzzy search for search string
+    // when search string, fuzzy search for search string
     const fuse = new Fuse(flatten(stories), fuseOptions)
     const results = fuse.search(searchString)
     setSearchedStories(results)
@@ -147,6 +148,7 @@ const App = () => {
             isLoadingMeta={isLoadingMeta}
             onNextBlockVisibilityChange={onNextBlockVisibilityChange}
             isLoadingPages={isLoadingPages}
+            searchString={searchString}
           />
           <CreateModal isOpen={isCreateModalOpen} />
           <CreateModalToggle
