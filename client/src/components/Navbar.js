@@ -46,6 +46,7 @@ const MenuLine = styled.div`
   background: ${({ theme }) => theme.text};
   transition: transform 0.3s;
   transform-origin: 38% 50%;
+  flex: 0 0 auto;
 `
 
 const MenuLine1 = styled(MenuLine)`
@@ -92,8 +93,12 @@ const MenuPanel = styled.div`
 const RightSideContent = styled.div`
   display: flex;
   align-items: center;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  right: 0;
   & > * + * {
-    margin-left: ${rem(20)};
+    margin-left: ${rem(10)};
   }
 `
 
@@ -106,6 +111,7 @@ const SearchContainer = styled.div`
   padding: ${rem(10)};
   ${({ desktopOnly }) => desktopOnly && 'display: none;'}
   ${media.sm`
+    width: ${rem(300)};
     ${({ desktopOnly }) => desktopOnly && 'display: flex;'}
     ${({ mobileOnly }) => mobileOnly && 'display: none;'}
   `}
