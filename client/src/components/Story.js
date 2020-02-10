@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { rem, rgba } from 'polished'
 import moment from 'moment'
@@ -75,14 +75,10 @@ const LoadingSpinner = styled.div`
 `
 
 const Story = ({ story, isLoading }) => {
-  const [isImageError, setIsImageError] = useState(false)
   const timeAgo = moment.unix(story.time).fromNow()
   const shortenedDescription = (story.description && story.description.length > 300)
     ? `${story.description.slice(0, 300)}...`
     : story.description
-  const onImageError = () => {
-    setIsImageError(true)
-  }
   return (
     <Container>
       <Link href={story.url} target="_blank">
@@ -91,11 +87,7 @@ const Story = ({ story, isLoading }) => {
         <Details>{story.score} points - by {story.by} - {timeAgo}</Details>
       </Link>
       <VisibilitySensor partialVisibility={true} offset={{ top: 200, bottom: 200 }}>
-        {({ isVisible }) => (
-          (story.imageURL && !isImageError)
-            ? <Image isVisible={isVisible} src={story.imageURL} onError={onImageError} />
-            : null
-        )}
+        {({ isVisible }) => story.imageURL ? <Image isVisible={isVisible} src={story.imageURL} /> : null}
       </VisibilitySensor>
       {isLoading && !story.isMetaLoaded && <LoadingSpinner />}
     </Container>
