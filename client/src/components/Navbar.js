@@ -33,6 +33,7 @@ const MenuButton = styled.div`
   align-items: center;
   position: relative;
   cursor: pointer;
+  z-index: 3;
   ${media.sm`
     height: ${({ theme }) => theme.navbarHeight.sm};
     width: ${({ theme }) => theme.navbarHeight.sm};
@@ -77,6 +78,7 @@ const MenuPanel = styled.div`
   background: ${({ theme }) => theme.menuPanelBackground};
   padding: ${({ theme }) => `${theme.navbarHeight.xs} ${theme.sideSpace.xs} 0`};
   transition: transform 0.3s;
+  z-index: 2;
   ${({ isMenuOpen }) => !isMenuOpen && 'transform: translateX(100%);'}
   ${media.sm`
     box-shadow: ${({ theme }) => theme.shadow && `0 0 6px ${theme.shadow}`};
