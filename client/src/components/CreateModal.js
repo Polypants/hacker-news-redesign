@@ -176,7 +176,7 @@ const Submit = styled.button`
   border-radius: ${rem(10)};
   border: none;
   color: ${({ theme }) => theme.text};
-  color: ${({ theme }) => theme.menuPanelAccent};
+  background: ${({ theme }) => theme.menuPanelAccent};
 
   &:focus {
     outline: none;
