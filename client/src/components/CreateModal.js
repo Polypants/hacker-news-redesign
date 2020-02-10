@@ -8,13 +8,13 @@ import media from '../media'
 
 const titles = [
   'Say whaaaaat?',
-  'Submit your story',
+  'Submit your story.',
   "What's the scoop?",
-  'Spread the word',
+  'Spread the word.',
   'Hear any good ones lately?',
-  "Paste that $!#% in",
+  "Paste that $!#% in.",
   "What'd they do this time?",
-  'Tell mama'
+  'Tell mama.'
 ]
 
 const Container = styled.div`

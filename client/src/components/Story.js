@@ -18,12 +18,15 @@ const Container = styled.div`
   `}
 `
 
-const Image = styled.img`
+const Image = styled.div`
   width: 100%;
-  max-height: ${rem(220)};
-  object-fit: contain;
+  height: ${rem(220)};
   filter: ${({ isVisible }) => isVisible ? 'none' : 'grayscale(1)'};
   transition: filter 0.3s;
+  background-image: ${({ src }) => `url(${src})`};
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 `
 
 const Title = styled.h2`
