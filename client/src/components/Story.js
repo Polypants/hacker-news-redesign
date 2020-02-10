@@ -9,6 +9,7 @@ import media from '../media'
 const Container = styled.div`
   border-bottom: ${({ theme }) => theme.border && `1px solid ${rgba(theme.border, 0.3)}`};
   position: relative;
+  overflow-wrap: break-word;
   ${media.sm`
     width: 50%;
   `}

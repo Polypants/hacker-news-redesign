@@ -7,15 +7,14 @@ import Typist from 'react-typist'
 import media from '../media'
 
 const titles = [
-  'Get me pictures of spider-man!',
-  'Submit your story.',
-  "What's the scoop?",
-  'Spread the word.',
-  'Hear any good ones lately?',
-  "Paste that $!#% in.",
-  "What'd they do this time?",
-  'Tell mama.',
   'Say whaaaaat?',
+  'Submit your story',
+  "What's the scoop?",
+  'Spread the word',
+  'Hear any good ones lately?',
+  "Paste that $!#% in",
+  "What'd they do this time?",
+  'Tell mama'
 ]
 
 const Container = styled.div`
