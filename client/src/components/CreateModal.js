@@ -27,7 +27,7 @@ const Container = styled.div`
   bottom: 0;
   left: 0;
   background: ${({ theme }) => theme.createModalBackground};
-  z-index: 2;
+  z-index: 4;
   transition: opacity 0.3s;
   opacity: ${({ isOpen }) => isOpen ? 1 : 0};
   pointer-events: ${({ isOpen }) => !isOpen && 'none'};
