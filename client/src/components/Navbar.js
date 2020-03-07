@@ -58,7 +58,7 @@ const MenuLine2 = styled(MenuLine)`
   ${({ isMenuOpen }) => isMenuOpen && `transform: rotate(-45deg) translateX(${rem(2)});`}
 `
 
-const Title = styled.p`
+const Title = styled.h1`
   margin: 0 0 0 ${rem(12.5)};
   font-size: ${rem(24)};
   text-decoration: none;

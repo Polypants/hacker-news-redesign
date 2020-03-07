@@ -223,7 +223,7 @@ const CreateModal = ({ isOpen }) => {
           )}
         </TitleContainer>
         <Dropzone {...getRootProps()}>
-          <ImagePreview src={image} />
+          <ImagePreview src={image} alt="preview uploaded file" />
           <input {...getInputProps()} />
           <p>{isDragActive ? 'Drop the files here...' : 'Drag files in or Click to upload'}</p>
         </Dropzone>

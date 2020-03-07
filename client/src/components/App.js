@@ -150,11 +150,13 @@ const App = () => {
             isLoadingPages={isLoadingPages}
             searchString={searchString}
           />
-          <CreateModal isOpen={isCreateModalOpen} />
-          <CreateModalToggle
-            toggleCreateModal={toggleCreateModal}
-            isCreateModalOpen={isCreateModalOpen}
-          />
+          <aside>
+            <CreateModal isOpen={isCreateModalOpen} />
+            <CreateModalToggle
+              toggleCreateModal={toggleCreateModal}
+              isCreateModalOpen={isCreateModalOpen}
+            />
+          </aside>
         </Container>
       </>
     </ThemeProvider>
